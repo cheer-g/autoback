@@ -1,8 +1,9 @@
 import shutil
 import os
-source='C:/Users/user/Desktop'
+source=os.path.join(os.environ["HOMEPATH"], "Desktop")
 txt='D:/txt'
-c='D:/txt'
+c='D:/c'
+short='D:/shortcuts'
 random='D:/random'
 for file in os.listdir(source):
     if file.endswith(".txt"):
@@ -13,11 +14,13 @@ for file in os.listdir(source):
         if not os.path.exists(c):
             os.makedirs(c)
         shutil.move(os.path.join(source,file),os.path.join(c,file))
+    elif file.endswith(".ink"):
+        if not os.path.exists(short):
+            os.makedirs(short)
+        shutil.move(os.path.join(source,file),os.path.join(short,file))
     else:
         if not os.path.exists(random):
             os.makedirs(random)
         shutil.move(os.path.join(source,file),os.path.join(random,file))
-        if file.endswith(".ink"):
-            shutil.move(os.path.join(source,file),os.path.join(random,file))
-print "Operation successful"
+
     
