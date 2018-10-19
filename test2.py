@@ -17,5 +17,7 @@ for file in os.listdir(source):
         if not os.path.exists(random):
             os.makedirs(random)
         shutil.move(os.path.join(source,file),os.path.join(random,file))
+        if file.endswith(".ink"):
+            shutil.move(os.path.join(source,file),os.path.join(random,file))
 print "Operation successful"
     
